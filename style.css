@@ -1,50 +1,58 @@
 :root {
     /* 1. The Scale Variables */
     --base-size: 1rem; /* 16px */
-    --ratio: 1.25;     /* Major Third Scale */
+    --ratio: 1.25;     /* Major Third Ratio */
 
-    /* 2. Calculating the sizes */
-    --text-sm:  calc(var(--base-size) / var(--ratio)); /* ~12.8px */
-    --text-base: var(--base-size);                     /* 16px */
-    --text-md:  calc(var(--text-base) * var(--ratio)); /* 20px */
-    --text-lg:  calc(var(--text-md) * var(--ratio));   /* 25px */
-    --text-xl:  calc(var(--text-lg) * var(--ratio));   /* 31.25px */
-    --text-xxl: calc(var(--text-xl) * var(--ratio));   /* 39px */
+    /* 2. Mathematical Calculations */
+    --text-sm:  calc(var(--base-size) / var(--ratio));
+    --text-base: var(--base-size);
+    --text-md:  calc(var(--text-base) * var(--ratio));
+    --text-lg:  calc(var(--text-md) * var(--ratio));
+    --text-xl:  calc(var(--text-lg) * var(--ratio));
+    --text-xxl: calc(var(--text-xl) * var(--ratio));
 
-    /* 3. Line Heights & Spacing */
+    /* 3. Spacing & Rhythm */
     --lh-body: 1.6;
     --lh-heading: 1.2;
 }
 
+/* 4. Base Styles */
 body {
     font-family: system-ui, -apple-system, sans-serif;
     line-height: var(--lh-body);
-    padding: 4rem 10%;
     color: #2d3436;
+    background-color: #ffffff;
 }
 
-/* 4. Applying the Scale */
-h1 { font-size: var(--text-xxl); line-height: var(--lh-heading); margin-bottom: 1rem; }
-h2 { font-size: var(--text-xl);  line-height: var(--lh-heading); margin-bottom: 0.75rem; }
-h3 { font-size: var(--text-lg);  line-height: var(--lh-heading); margin-bottom: 0.5rem; }
+.wrapper {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+}
 
-p { margin-bottom: 1.5rem; max-width: 65ch; } /* 'ch' limits width for readability */
+/* 5. Applying the System */
+h1 { font-size: var(--text-xxl); line-height: var(--lh-heading); margin-bottom: 1.5rem; }
+h2 { font-size: var(--text-xl);  line-height: var(--lh-heading); margin-bottom: 1rem; }
+h3 { font-size: var(--text-lg);  line-height: var(--lh-heading); margin-bottom: 0.75rem; }
+
+p { margin-bottom: 1.5rem; max-width: 65ch; } /* 'ch' unit ensures perfect line length */
 
 .text-lg { font-size: var(--text-md); color: #636e72; }
 .text-sm { font-size: var(--text-sm); opacity: 0.8; }
 
-.label { 
-    display: block; 
-    font-size: 0.7rem; 
-    text-transform: uppercase; 
-    color: #0984e3; 
+.label {
+    display: block;
+    font-size: 0.75rem;
     font-weight: bold;
-    margin-top: 2rem;
+    text-transform: uppercase;
+    color: #0984e3;
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
 }
 
-/* 5. Mobile Adjustment */
-@media (max-width: 600px) {
+/* 6. Mobile-First Override */
+@media (max-width: 768px) {
     :root {
-        --ratio: 1.15; /* Shrink the scale slightly for smaller screens */
+        --ratio: 1.15; /* Smaller steps for smaller screens */
     }
 }
